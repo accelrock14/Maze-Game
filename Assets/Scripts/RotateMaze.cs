@@ -5,20 +5,11 @@ using UnityEngine.UI;
 
 public class RotateMaze : MonoBehaviour
 {
-    public Button rotateCWButton;
-    public Button rotateCCWButton;
-
     public float rotationSpeed = 90f;
     public Vector3 axis = Vector3.up;
 
-    private ButtonPressed rotateCW;
-    private ButtonPressed rotateCCW;
-
-    void Start()
-    {
-        rotateCW = rotateCWButton.GetComponent < ButtonPressed>();
-        rotateCCW = rotateCCWButton.GetComponent < ButtonPressed>();
-    }
+    [SerializeField]private ButtonPressed rotateCW;
+    [SerializeField]private ButtonPressed rotateCCW;
 
     void Update()
     {
@@ -34,11 +25,11 @@ public class RotateMaze : MonoBehaviour
 
     private void RotateCW()
     {
-        transform.Rotate(Vector3.forward * -Time.deltaTime * rotationSpeed);
+        transform.Rotate(axis * -Time.deltaTime * rotationSpeed);
     }
 
     private void RotateCCW()
     {
-        transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
+        transform.Rotate(axis * Time.deltaTime * rotationSpeed);
     }
 }
