@@ -3,6 +3,7 @@ using UnityEngine;
 public class Spring : MonoBehaviour
 {
     private Rigidbody2D playerRb;
+    public Animator animator;
 
     public float springForce = 20f;
 
@@ -15,6 +16,7 @@ public class Spring : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            animator.SetTrigger("Impact");
             playerRb.AddForce(transform.up * springForce, ForceMode2D.Impulse);
         }
     }

@@ -14,7 +14,7 @@ public class Bullet : Obstacle
     {
         if (collision.gameObject.TryGetComponent<Player>(out var player))
         {
-            player.destroy();
+            player.Destroy();
         }
         Destroy(gameObject);
     }
