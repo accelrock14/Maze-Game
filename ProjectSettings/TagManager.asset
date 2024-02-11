@@ -11,16 +11,16 @@ TagManager:
   - Player
   - Water
   - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - Maze
-  - 
-  - 
-  - 
-  - Player
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2796702145
+    locked: 0
+  - name: Items
+    uniqueID: 173904207
     locked: 0
   - name: Walls
     uniqueID: 1166972587

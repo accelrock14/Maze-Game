@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RotateMaze : MonoBehaviour
 {
     public float rotationSpeed = 90f;
-    public Vector3 axis = Vector3.up;
+    private Vector3 axis = Vector3.forward;
 
     [SerializeField]private ButtonPressed rotateCW;
     [SerializeField]private ButtonPressed rotateCCW;
 
-    void Update()
+    void LateUpdate()
     {
         if (rotateCW.buttonPressed)
         {
@@ -25,11 +22,11 @@ public class RotateMaze : MonoBehaviour
 
     private void RotateCW()
     {
-        transform.Rotate(axis * -Time.deltaTime * rotationSpeed);
+        transform.Rotate(rotationSpeed * -Time.deltaTime * axis);
     }
 
     private void RotateCCW()
     {
-        transform.Rotate(axis * Time.deltaTime * rotationSpeed);
+        transform.Rotate(rotationSpeed * Time.deltaTime * axis);
     }
 }

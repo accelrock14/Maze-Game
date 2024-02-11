@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public class RotateObj : MonoBehaviour
+public class TouchControls : MonoBehaviour
 {
+    //[SerializeField] private float rotationSpeed = 90f;
+    //private Vector3 previousAngle = Vector3.zero;
+
     private Camera mainCamera;
     private Vector3 screenPos;
     private float angleOffset;
@@ -14,7 +17,7 @@ public class RotateObj : MonoBehaviour
         col = GetComponent<Collider2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
@@ -33,6 +36,11 @@ public class RotateObj : MonoBehaviour
                 Vector3 vec3 = Input.mousePosition - screenPos;
                 float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
                 transform.eulerAngles = new Vector3(0, 0, angle + angleOffset);
+
+                //transform.eulerAngles = Vector3.SmoothDamp(transform.eulerAngles, new Vector3(0, 0, angle + angleOffset), ref previousAngle, rotationSpeed * Time.deltaTime);
+
+                //float adjustedAngle = Mathf.Clamp(angle + angleOffset, -180f, 180f);
+                //transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + adjustedAngle * rotationSpeed * Time.deltaTime);
             }
         }
     }
