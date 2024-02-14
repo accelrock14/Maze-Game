@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,45 +33,48 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        ResetTimeScale();
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GameOver()
     {
-        Time.timeScale = 0.0f;
         gameIsPaused = true;
+        Time.timeScale = 0f;
         gameOverMenu.SetActive(true);
     }
 
     public void GoBack()
     {
-        ResetTimeScale();
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(0);
     }
 
     public void NextLevel()
     {
-        ResetTimeScale();
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
     }
 
     public void LoadLevels()
     {
-        ResetTimeScale();
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(1);
     }
 
-    public void ResetTimeScale()
+    public void Victory(int coins)
     {
-        if(gameIsPaused)
+        int level = LevelManager.currentLevel - 2;
+        if(level == LevelManager.UnlockedLevels)
         {
-            Time.timeScale = 1.0f;
+            LevelManager.UnlockedLevels++;
+            PlayerPrefs.SetInt("UnlockedLevels", LevelManager.UnlockedLevels);
         }
-    }
-
-    public void Victory()
-    {
+        
+        if(coins > PlayerPrefs.GetInt("coins" + level.ToString(), 0))
+        {
+            PlayerPrefs.SetInt("coins" + level.ToString(), coins);
+        }
         WinScreen();
     }
 

@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448c06a8af488424c804ebedf304bfc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 6664561284786710914}
   springForce: 5.8
 --- !u!95 &6664561284786710914
 Animator:
